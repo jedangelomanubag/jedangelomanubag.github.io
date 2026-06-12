@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Jed Angelo | Developer Portfolio</title>
+<title>Jed Angelo | Portfolio</title>
 
 <style>
   :root {
@@ -12,7 +12,6 @@
     --text:#e6edf3;
     --muted:#9aa4b2;
     --accent:#4ea1ff;
-    --border:#1e293b;
   }
 
   * {
@@ -25,107 +24,85 @@
   body {
     background:var(--bg);
     color:var(--text);
+    display:flex;
   }
 
-  /* NAV */
-  nav {
+  /* SIDEBAR */
+  .sidebar {
     position:fixed;
+    left:0;
     top:0;
-    width:100%;
+    width:250px;
+    height:100vh;
     background:#0f172a;
-    display:flex;
-    justify-content:center;
-    gap:25px;
-    padding:15px;
-    border-bottom:1px solid var(--border);
-    z-index:1000;
-  }
-
-  nav a {
-    color:var(--muted);
-    text-decoration:none;
-    font-size:14px;
-  }
-
-  nav a:hover {
-    color:var(--accent);
-  }
-
-  /* HERO */
-  header {
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    gap:40px;
-    padding:140px 20px 80px;
-    flex-wrap:wrap;
+    border-right:1px solid #1e293b;
+    padding:20px;
   }
 
   .profile {
     text-align:center;
+    margin-bottom:30px;
   }
 
   .profile img {
-    width:140px;
-    height:140px;
+    width:90px;
+    height:90px;
     border-radius:50%;
-    border:3px solid var(--accent);
-    object-fit:cover;
+    border:2px solid var(--accent);
   }
 
-  .profile h1 {
+  .profile h2 {
     margin-top:10px;
-    font-size:22px;
-  }
-
-  .subtitle {
-    color:var(--muted);
-    max-width:400px;
     font-size:16px;
   }
 
-  /* SECTIONS */
+  .sidebar a {
+    display:block;
+    color:var(--muted);
+    text-decoration:none;
+    padding:10px;
+    margin:5px 0;
+    border-radius:6px;
+  }
+
+  .sidebar a:hover {
+    background:#1e2a44;
+    color:var(--accent);
+  }
+
+  /* CONTENT */
+  .content {
+    margin-left:250px;
+    padding:40px;
+    width:100%;
+  }
+
   section {
-    max-width:1000px;
-    margin:auto;
-    padding:90px 20px;
+    margin-bottom:80px;
   }
 
   h2 {
     border-left:4px solid var(--accent);
     padding-left:10px;
-    margin-bottom:20px;
-  }
-
-  /* PROJECT CARDS */
-  .grid {
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-    gap:15px;
+    margin-bottom:15px;
   }
 
   .card {
     background:var(--card);
-    padding:18px;
+    padding:15px;
     border-radius:10px;
-    border:1px solid var(--border);
-    transition:0.3s;
+    margin-bottom:10px;
   }
 
-  .card:hover {
-    transform:translateY(-5px);
-    border-color:var(--accent);
-  }
-
-  .project-title {
-    color:var(--accent);
-    font-size:16px;
-    margin-bottom:8px;
+  .grid {
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:15px;
   }
 
   .tag {
     display:inline-block;
-    margin-top:10px;
+    margin-top:8px;
     font-size:12px;
     padding:4px 8px;
     background:#1e2a44;
@@ -133,165 +110,128 @@
     color:var(--muted);
   }
 
-  /* BUTTONS */
-  .btn {
-    display:inline-block;
-    margin-top:10px;
-    padding:6px 10px;
-    border:1px solid var(--accent);
-    border-radius:6px;
-    color:var(--accent);
-    font-size:13px;
-    text-decoration:none;
-  }
-
-  .btn:hover {
-    background:var(--accent);
-    color:#000;
-  }
-
-  /* CONTACT */
-  .contact {
-    background:var(--card);
-    padding:20px;
-    border-radius:10px;
-    border:1px solid var(--border);
-  }
-
-  footer {
-    text-align:center;
-    padding:40px;
-    color:var(--muted);
+  /* MOBILE */
+  @media(max-width:700px){
+    .sidebar {
+      width:100px;
+    }
+    .profile h2 {
+      display:none;
+    }
+    .content {
+      margin-left:100px;
+    }
+    .sidebar a {
+      font-size:12px;
+    }
   }
 </style>
 </head>
 
 <body>
 
-<!-- TOP BAR -->
-<nav>
-  <div class="left">
-    <img src="https://i.imgur.com/0y0y0y0.png" alt="profile">
-    <span class="name">Jed Angelo O. Manubag</span>
-  </div>
-
-  <div class="right">
-    <a href="#home">Home</a>
-    <a href="#projects">Projects</a>
-    <a href="#skills">Skills</a>
-    <a href="#certificates">Certificates</a>
-    <a href="#contact">Contact</a>
-  </div>
-</nav>
-
-<!-- HERO -->
-<header id="home">
+<!-- SIDEBAR -->
+<div class="sidebar">
 
   <div class="profile">
     <img src="https://i.imgur.com/0y0y0y0.png" alt="profile">
-    <h1>Jed Angelo O. Manubag</h1>
+    <h2>Jed Angelo</h2>
   </div>
 
-  <div class="subtitle">
-    BSIT Graduate • Networking • System Developer • Linux Enthusiast  
-    <br><br>
-    Building real-world systems, focusing on utility billing, networking, and backend development.
-  </div>
+  <a href="#about">About Me</a>
+  <a href="#projects">Projects</a>
+  <a href="#skills">Skills</a>
+  <a href="#certificates">Certificates</a>
+  <a href="#contact">Contact</a>
 
-</header>
+</div>
 
-<!-- FEATURED PROJECT -->
-<section id="projects">
-  <h2>Featured Project</h2>
+<!-- CONTENT -->
+<div class="content">
 
-  <div class="card">
-    <div class="project-title">Water Utility Billing System (Capstone)</div>
-    <p>
-      A full system for meter reading, automated billing computation, SMS notifications,
-      and consumer monitoring dashboard.
-    </p>
-
-    <span class="tag">PHP / MySQL / System Design</span>
-    <br>
-    <a class="btn" href="#">View Project</a>
-    <a class="btn" href="#">GitHub Repo</a>
-  </div>
-
-  <br><br>
-
-  <h2>Other Projects</h2>
-
-  <div class="grid">
+  <!-- ABOUT -->
+  <section id="about">
+    <h2>About Me</h2>
 
     <div class="card">
-      <div class="project-title">CRUD System</div>
-      <p>Basic web system with database operations.</p>
-      <span class="tag">Web App</span>
+      <p>
+        BSIT Graduate with experience in networking, system development,
+        and Linux server administration.
+      </p>
     </div>
 
     <div class="card">
-      <div class="project-title">Linux Server Setup</div>
-      <p>SSH, file sharing, and server configuration practice.</p>
-      <span class="tag">System Admin</span>
+      <h3>Educational Background</h3>
+      <p>Bachelor of Science in Information Technology</p>
+      <p>St. Michael's College (2022 - 2026)</p>
     </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <h2>Projects</h2>
+
+    <div class="grid">
+
+      <div class="card">
+        <h3>Water Utility Billing System</h3>
+        <p>Capstone system with billing, meter reading, SMS notification.</p>
+        <span class="tag">Capstone</span>
+      </div>
+
+      <div class="card">
+        <h3>CRUD System</h3>
+        <p>Basic database-driven web application.</p>
+      </div>
+
+      <div class="card">
+        <h3>Linux Server Setup</h3>
+        <p>SSH, file sharing, system configuration practice.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <h2>Skills</h2>
+
+    <div class="grid">
+      <div class="card">HTML / CSS / JavaScript</div>
+      <div class="card">Linux Administration</div>
+      <div class="card">MySQL Database</div>
+      <div class="card">Networking Fundamentals</div>
+    </div>
+  </section>
+
+  <!-- CERTIFICATES -->
+  <section id="certificates">
+    <h2>Certificates</h2>
+
+    <div class="grid">
+      <div class="card">
+        <h3>TESDA NC II</h3>
+        <p>Computer Systems Servicing</p>
+      </div>
+
+      <div class="card">
+        <h3>Networking Fundamentals</h3>
+        <p>Cisco / Training</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <h2>Contact</h2>
 
     <div class="card">
-      <div class="project-title">Networking Practice</div>
-      <p>Subnetting, routing, and network configuration exercises.</p>
-      <span class="tag">Networking</span>
+      <p>Email: your.email@example.com</p>
+      <p>GitHub: github.com/yourusername</p>
     </div>
+  </section>
 
-  </div>
-</section>
-
-<!-- SKILLS -->
-<section id="skills">
-  <h2>Skills</h2>
-
-  <div class="grid">
-    <div class="card">HTML / CSS / JavaScript</div>
-    <div class="card">Linux System Administration</div>
-    <div class="card">MySQL Database Design</div>
-    <div class="card">Networking Fundamentals</div>
-    <div class="card">Basic Node.js / Backend</div>
-  </div>
-</section>
-
-<!-- CERTIFICATES -->
-<section id="certificates">
-  <h2>Certificates</h2>
-
-  <div class="grid">
-    <div class="card">
-      <h3>TESDA NC II</h3>
-      <p>Computer Systems Servicing</p>
-    </div>
-
-    <div class="card">
-      <h3>Networking Fundamentals</h3>
-      <p>Cisco / Online Training</p>
-    </div>
-
-    <div class="card">
-      <h3>Linux Basics</h3>
-      <p>System Administration Training</p>
-    </div>
-  </div>
-</section>
-
-<!-- CONTACT -->
-<section id="contact">
-  <h2>Contact</h2>
-
-  <div class="contact">
-    <p>Email: your.email@example.com</p>
-    <p>GitHub: https://github.com/jedangelomanubag</p>
-  </div>
-</section>
-
-<footer>
-  © 2026 Jed Angelo Manubag • Developer Portfolio
-</footer>
+</div>
 
 </body>
 </html>
