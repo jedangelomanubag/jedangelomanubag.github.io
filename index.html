@@ -3,58 +3,104 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Jed Angelo | Portfolio</title>
+  <title>Jed Angelo Manubag | Portfolio</title>
 
   <style>
-    body {
-      font-family: Arial, sans-serif;
+    :root {
+      --bg: #0b1220;
+      --card: #111b2e;
+      --text: #e6edf3;
+      --muted: #9aa4b2;
+      --accent: #4ea1ff;
+    }
+
+    * {
       margin: 0;
-      background: #0f172a;
-      color: #e2e8f0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
     }
 
     header {
-      padding: 60px 20px;
+      padding: 80px 20px;
       text-align: center;
-      background: #111827;
+      background: linear-gradient(135deg, #0f172a, #111b2e);
     }
 
     header h1 {
-      margin: 0;
-      font-size: 40px;
+      font-size: 42px;
+      margin-bottom: 10px;
     }
 
     header p {
-      color: #94a3b8;
+      color: var(--muted);
+      font-size: 18px;
     }
 
-    section {
-      max-width: 900px;
+    .container {
+      max-width: 1000px;
       margin: auto;
       padding: 40px 20px;
     }
 
     h2 {
-      border-left: 4px solid #38bdf8;
+      margin-bottom: 15px;
+      border-left: 4px solid var(--accent);
       padding-left: 10px;
     }
 
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 15px;
+    }
+
     .card {
-      background: #1e293b;
-      padding: 15px;
-      margin: 10px 0;
-      border-radius: 8px;
+      background: var(--card);
+      padding: 18px;
+      border-radius: 10px;
+      transition: 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .project-title {
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+
+    .tag {
+      display: inline-block;
+      background: #1e2a44;
+      color: var(--muted);
+      padding: 4px 8px;
+      border-radius: 6px;
+      font-size: 12px;
+      margin-top: 8px;
     }
 
     a {
-      color: #38bdf8;
+      color: var(--accent);
       text-decoration: none;
     }
 
     footer {
       text-align: center;
-      padding: 20px;
-      color: #64748b;
+      padding: 30px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .contact {
+      margin-top: 10px;
     }
   </style>
 </head>
@@ -63,50 +109,82 @@
 
 <header>
   <h1>Jed Angelo O. Manubag</h1>
-  <p>BSIT Graduate | Networking | System Developer | Linux Enthusiast</p>
+  <p>BSIT Graduate • Networking • System Developer • Linux Enthusiast</p>
 </header>
 
-<section>
-  <h2>About Me</h2>
-  <p>
-    I am an Information Technology graduate passionate about networking,
-    system development, and building real-world utility systems.
-  </p>
-</section>
+<div class="container">
 
-<section>
-  <h2>Skills</h2>
-  <div class="card">HTML, CSS, JavaScript</div>
-  <div class="card">Linux System Administration</div>
-  <div class="card">MySQL / Database Design</div>
-  <div class="card">Networking Fundamentals</div>
-</section>
-
-<section>
-  <h2>Projects</h2>
-
-  <div class="card">
-    <h3>Water Utility Billing System (Capstone)</h3>
+  <section>
+    <h2>About Me</h2>
     <p>
-      A full system for meter reading, billing computation,
-      SMS notification, and consumer monitoring.
+      I am an Information Technology graduate focused on building practical systems,
+      networking solutions, and server-based applications. I enjoy working with Linux,
+      databases, and backend systems that solve real-world problems.
     </p>
-  </div>
+  </section>
 
-  <div class="card">
-    <h3>Basic CRUD Web App</h3>
-    <p>Simple create/read/update/delete system using web technologies.</p>
-  </div>
-</section>
+  <br>
 
-<section>
-  <h2>Contact</h2>
-  <p>Email: your.email@example.com</p>
-  <p>GitHub: <a href="https://github.com/">github.com/yourusername</a></p>
-</section>
+  <section>
+    <h2>Skills</h2>
+    <div class="grid">
+      <div class="card">HTML, CSS, JavaScript</div>
+      <div class="card">Linux System Administration</div>
+      <div class="card">MySQL Database Design</div>
+      <div class="card">Networking Fundamentals</div>
+      <div class="card">Basic Node.js / Server Setup</div>
+    </div>
+  </section>
+
+  <br>
+
+  <section>
+    <h2>Projects</h2>
+    <div class="grid">
+
+      <div class="card">
+        <div class="project-title">Water Utility Billing System</div>
+        <p>
+          Full-stack capstone system with meter reading, automated billing,
+          SMS notifications, and consumer monitoring dashboard.
+        </p>
+        <span class="tag">Capstone Project</span>
+      </div>
+
+      <div class="card">
+        <div class="project-title">CRUD Management System</div>
+        <p>
+          Simple web-based system for managing records with database integration.
+        </p>
+        <span class="tag">Web App</span>
+      </div>
+
+      <div class="card">
+        <div class="project-title">Linux Server Setup Practice</div>
+        <p>
+          Hands-on server configuration practice including SSH, file sharing,
+          and basic hosting setup.
+        </p>
+        <span class="tag">System Admin</span>
+      </div>
+
+    </div>
+  </section>
+
+  <br>
+
+  <section>
+    <h2>Contact</h2>
+    <div class="contact">
+      <p>Email: your.email@example.com</p>
+      <p>GitHub: <a href="https://github.com/">github.com/yourusername</a></p>
+    </div>
+  </section>
+
+</div>
 
 <footer>
-  © 2026 Jed Angelo | Built with GitHub Pages
+  © 2026 Jed Angelo Manubag • Built with GitHub Pages
 </footer>
 
 </body>
