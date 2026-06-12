@@ -1,237 +1,499 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Jed Angelo | Portfolio</title>
-
-<style>
-  :root {
-    --bg:#0b1220;
-    --card:#111b2e;
-    --text:#e6edf3;
-    --muted:#9aa4b2;
-    --accent:#4ea1ff;
-  }
-
-  * {
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:Arial;
-  }
-
-  body {
-    background:var(--bg);
-    color:var(--text);
-    display:flex;
-  }
-
-  /* SIDEBAR */
-  .sidebar {
-    position:fixed;
-    left:0;
-    top:0;
-    width:250px;
-    height:100vh;
-    background:#0f172a;
-    border-right:1px solid #1e293b;
-    padding:20px;
-  }
-
-  .profile {
-    text-align:center;
-    margin-bottom:30px;
-  }
-
-  .profile img {
-    width:90px;
-    height:90px;
-    border-radius:50%;
-    border:2px solid var(--accent);
-  }
-
-  .profile h2 {
-    margin-top:10px;
-    font-size:16px;
-  }
-
-  .sidebar a {
-    display:block;
-    color:var(--muted);
-    text-decoration:none;
-    padding:10px;
-    margin:5px 0;
-    border-radius:6px;
-  }
-
-  .sidebar a:hover {
-    background:#1e2a44;
-    color:var(--accent);
-  }
-
-  /* CONTENT */
-  .content {
-    margin-left:250px;
-    padding:40px;
-    width:100%;
-  }
-
-  section {
-    margin-bottom:80px;
-  }
-
-  h2 {
-    border-left:4px solid var(--accent);
-    padding-left:10px;
-    margin-bottom:15px;
-  }
-
-  .card {
-    background:var(--card);
-    padding:15px;
-    border-radius:10px;
-    margin-bottom:10px;
-  }
-
-  .grid {
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-    gap:15px;
-  }
-
-  .tag {
-    display:inline-block;
-    margin-top:8px;
-    font-size:12px;
-    padding:4px 8px;
-    background:#1e2a44;
-    border-radius:6px;
-    color:var(--muted);
-  }
-
-  /* MOBILE */
-  @media(max-width:700px){
-    .sidebar {
-      width:100px;
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jed Angelo O. Manubag — Portfolio</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg-dark: #0a0f1e; --bg-mid: #0d1424;
+      --blue: #3b82f6; --blue-light: #60a5fa; --cyan: #22d3ee;
+      --green: #4ade80; --purple: #a78bfa; --orange: #fb923c;
+      --white: #f8fafc; --slate-300: #cbd5e1; --slate-400: #94a3b8;
+      --slate-500: #64748b; --slate-600: #475569; --slate-700: #334155;
+      --slate-800: #1e293b; --border: rgba(255,255,255,0.07);
     }
-    .profile h2 {
-      display:none;
+    html { scroll-behavior: smooth; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: var(--bg-dark); color: var(--slate-300); line-height: 1.6; font-size: 16px; }
+    a { text-decoration: none; color: inherit; }
+    svg { display: inline-block; vertical-align: middle; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+    /* NAVBAR */
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(10,15,30,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); height: 56px; display: flex; align-items: center; }
+    .nav-inner { max-width: 960px; margin: 0 auto; padding: 0 24px; width: 100%; display: flex; align-items: center; justify-content: space-between; }
+    .nav-logo { color: var(--white); font-weight: 700; font-size: 1rem; }
+    .nav-logo span { color: var(--blue-light); }
+    .nav-links { display: flex; gap: 28px; }
+    .nav-links a { color: var(--slate-400); font-size: .875rem; transition: color .2s; }
+    .nav-links a:hover { color: var(--white); }
+    .nav-toggle { display: none; background: none; border: none; cursor: pointer; color: var(--slate-400); }
+    .nav-mobile { display: none; flex-direction: column; gap: 14px; padding: 16px 24px; background: var(--bg-dark); border-top: 1px solid var(--border); }
+    .nav-mobile a { color: var(--slate-400); font-size: .9rem; }
+    .nav-mobile.open { display: flex; }
+
+    /* LAYOUT */
+    main { padding-top: 56px; }
+    section { padding: 80px 24px; }
+    .container { max-width: 960px; margin: 0 auto; }
+    .section-label { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+    .section-label::before { content: ''; display: block; width: 24px; height: 2px; background: var(--blue); }
+    .section-label span { color: var(--blue-light); font-size: .72rem; font-weight: 600; text-transform: uppercase; letter-spacing: .12em; }
+    h2.section-title { color: var(--white); font-size: 2rem; font-weight: 700; margin-bottom: 8px; }
+    p.section-sub { color: var(--slate-400); font-size: .97rem; margin-bottom: 48px; }
+
+    /* HERO */
+    #hero { min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; background: var(--bg-dark); position: relative; overflow: hidden; text-align: center; }
+    .grid-bg { position: absolute; inset: 0; opacity: .08; background-image: linear-gradient(rgba(99,179,237,.4) 1px, transparent 1px), linear-gradient(90deg, rgba(99,179,237,.4) 1px, transparent 1px); background-size: 40px 40px; pointer-events: none; }
+    .glow { position: absolute; top: 33%; left: 50%; transform: translate(-50%,-50%); width: 600px; height: 600px; border-radius: 50%; background: rgba(59,130,246,.08); filter: blur(120px); pointer-events: none; }
+    .hero-inner { position: relative; z-index: 1; max-width: 680px; margin: 0 auto; padding: 24px; }
+    .avatar { width: 96px; height: 96px; border-radius: 50%; background: linear-gradient(135deg,#3b82f6,#22d3ee); display: flex; align-items: center; justify-content: center; margin: 0 auto 24px; font-size: 2rem; font-weight: 700; color: #fff; box-shadow: 0 0 40px rgba(59,130,246,.35); }
+    .status-dot { display: inline-flex; align-items: center; gap: 6px; color: var(--green); font-size: .82rem; margin-bottom: 14px; }
+    .status-dot::before { content: ''; display: block; width: 8px; height: 8px; border-radius: 50%; background: var(--green); animation: pulse 2s infinite; }
+    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.3} }
+    .hero-name { color: var(--white); font-size: 2.8rem; font-weight: 700; line-height: 1.15; margin-bottom: 8px; }
+    .hero-title { color: var(--blue-light); font-size: 1.2rem; font-weight: 500; margin-bottom: 8px; }
+    .hero-tagline { color: var(--slate-400); font-size: 1rem; margin-bottom: 24px; }
+    .tags { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-bottom: 32px; }
+    .tag { padding: 4px 12px; border-radius: 9999px; font-size: .8rem; background: rgba(59,130,246,.12); color: #93c5fd; border: 1px solid rgba(59,130,246,.3); }
+    .btn-row { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
+    .btn { display: inline-flex; align-items: center; gap: 8px; padding: 10px 20px; border-radius: 8px; font-size: .9rem; font-weight: 500; cursor: pointer; transition: background .2s, color .2s; }
+    .btn-primary { background: #2563eb; color: #fff; border: none; box-shadow: 0 4px 20px rgba(37,99,235,.3); }
+    .btn-primary:hover { background: #3b82f6; }
+    .btn-outline { background: transparent; color: var(--slate-300); border: 1px solid var(--slate-600); }
+    .btn-outline:hover { background: var(--slate-800); color: var(--white); }
+    .hero-icons { display: flex; justify-content: center; gap: 40px; margin-top: 56px; }
+    .hero-icon-item { display: flex; flex-direction: column; align-items: center; gap: 8px; color: var(--slate-500); font-size: .75rem; }
+    .icon-box { width: 40px; height: 40px; border-radius: 10px; background: var(--slate-800); border: 1px solid var(--slate-700); display: flex; align-items: center; justify-content: center; }
+    .icon-box svg { stroke: var(--blue-light); }
+
+    /* ABOUT */
+    #about { background: var(--bg-mid); }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-top: 40px; }
+    .about-bio p { color: var(--slate-400); font-size: .97rem; line-height: 1.75; margin-bottom: 16px; }
+    .edu-card { background: rgba(30,41,59,.5); border: 1px solid var(--border); border-radius: 16px; padding: 24px; }
+    .edu-card-header { display: flex; align-items: center; gap: 10px; color: var(--blue-light); margin-bottom: 16px; font-weight: 600; }
+    .edu-card-header svg { stroke: var(--blue-light); }
+    .edu-card h4 { color: var(--white); font-size: .97rem; font-weight: 600; }
+    .edu-card .school { color: var(--slate-400); margin-top: 4px; font-size: .9rem; }
+    .edu-card .year { color: var(--slate-500); margin-top: 2px; font-size: .8rem; }
+    .edu-divider { border: none; border-top: 1px solid rgba(255,255,255,.06); margin: 16px 0; }
+    .interests-label { display: flex; align-items: center; gap: 8px; color: var(--blue-light); font-size: .82rem; font-weight: 600; margin-bottom: 12px; }
+    .interests-label svg { stroke: var(--blue-light); }
+    .interest-list { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    .interest-list li { display: flex; align-items: center; gap: 8px; color: var(--slate-400); font-size: .875rem; }
+    .interest-list li::before { content: ''; display: block; width: 6px; height: 6px; border-radius: 50%; background: var(--blue); flex-shrink: 0; }
+
+    /* PROJECTS */
+    #projects { background: var(--bg-dark); }
+    .projects-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .project-card { border-radius: 16px; padding: 24px; display: flex; flex-direction: column; gap: 16px; transition: transform .2s; }
+    .project-card:hover { transform: scale(1.01); }
+    .project-card.blue  { border: 1px solid rgba(59,130,246,.3);  background: linear-gradient(135deg,rgba(59,130,246,.1),rgba(34,211,238,.04)); }
+    .project-card.slate { border: 1px solid rgba(71,85,105,.4);   background: linear-gradient(135deg,rgba(30,41,59,.3),rgba(15,23,42,.2)); }
+    .project-card.green { border: 1px solid rgba(74,222,128,.2);  background: linear-gradient(135deg,rgba(74,222,128,.07),rgba(16,185,129,.03)); }
+    .project-card.purple{ border: 1px solid rgba(167,139,250,.2); background: linear-gradient(135deg,rgba(167,139,250,.07),rgba(139,92,246,.03)); }
+    .card-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; }
+    .card-icon-wrap { display: flex; align-items: center; gap: 12px; }
+    .card-icon { width: 40px; height: 40px; border-radius: 10px; background: var(--slate-800); border: 1px solid var(--slate-700); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .card-icon svg { stroke: var(--blue-light); }
+    .card-title { color: var(--white); font-size: .97rem; font-weight: 600; }
+    .card-badge { padding: 3px 10px; border-radius: 9999px; font-size: .72rem; border: 1px solid; white-space: nowrap; flex-shrink: 0; }
+    .badge-blue   { background: rgba(59,130,246,.15);  color: #93c5fd; border-color: rgba(59,130,246,.3); }
+    .badge-slate  { background: rgba(71,85,105,.3);    color: var(--slate-300); border-color: rgba(71,85,105,.5); }
+    .badge-green  { background: rgba(74,222,128,.12);  color: #86efac; border-color: rgba(74,222,128,.3); }
+    .badge-purple { background: rgba(167,139,250,.12); color: #c4b5fd; border-color: rgba(167,139,250,.3); }
+    .card-desc { color: var(--slate-400); font-size: .875rem; line-height: 1.65; }
+    .card-features { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+    .card-features li { display: flex; align-items: center; gap: 8px; color: var(--slate-400); font-size: .8rem; }
+    .card-features li::before { content:''; display:block; width:4px; height:4px; border-radius:50%; background:var(--blue-light); flex-shrink:0; }
+    .card-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: auto; padding-top: 8px; }
+    .card-tag { padding: 2px 8px; border-radius: 4px; font-size: .72rem; background: var(--slate-800); color: var(--slate-400); border: 1px solid var(--slate-700); }
+
+    /* SKILLS */
+    #skills { background: var(--bg-mid); }
+    .skills-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
+    .skill-group { border-radius: 16px; padding: 20px; }
+    .skill-group.orange { background: rgba(251,146,60,.06); border: 1px solid rgba(251,146,60,.2); }
+    .skill-group.blue   { background: rgba(59,130,246,.06);  border: 1px solid rgba(59,130,246,.2); }
+    .skill-group.cyan   { background: rgba(34,211,238,.06);  border: 1px solid rgba(34,211,238,.2); }
+    .skill-group.green  { background: rgba(74,222,128,.06);  border: 1px solid rgba(74,222,128,.2); }
+    .skill-group.purple { background: rgba(167,139,250,.06); border: 1px solid rgba(167,139,250,.2); }
+    .skill-group-header { display: flex; align-items: center; gap: 8px; margin-bottom: 20px; font-weight: 600; font-size: .9rem; }
+    .skill-group.orange .skill-group-header { color: var(--orange); }
+    .skill-group.blue   .skill-group-header { color: var(--blue-light); }
+    .skill-group.cyan   .skill-group-header { color: var(--cyan); }
+    .skill-group.green  .skill-group-header { color: var(--green); }
+    .skill-group.purple .skill-group-header { color: var(--purple); }
+    .skill-group.orange .skill-group-header svg { stroke: var(--orange); }
+    .skill-group.blue   .skill-group-header svg { stroke: var(--blue-light); }
+    .skill-group.cyan   .skill-group-header svg { stroke: var(--cyan); }
+    .skill-group.green  .skill-group-header svg { stroke: var(--green); }
+    .skill-group.purple .skill-group-header svg { stroke: var(--purple); }
+    .skill-item { margin-bottom: 16px; }
+    .skill-row { display: flex; justify-content: space-between; margin-bottom: 5px; }
+    .skill-name { color: var(--slate-300); font-size: .82rem; }
+    .skill-pct  { color: var(--slate-500); font-size: .75rem; }
+    .skill-bar-bg { height: 6px; border-radius: 9999px; background: var(--slate-800); }
+    .skill-bar-fill { height: 6px; border-radius: 9999px; }
+    .orange .skill-bar-fill { background: linear-gradient(90deg,#f97316,#fbbf24); }
+    .blue   .skill-bar-fill { background: linear-gradient(90deg,#2563eb,#60a5fa); }
+    .cyan   .skill-bar-fill { background: linear-gradient(90deg,#0891b2,#22d3ee); }
+    .green  .skill-bar-fill { background: linear-gradient(90deg,#16a34a,#4ade80); }
+    .purple .skill-bar-fill { background: linear-gradient(90deg,#7c3aed,#a78bfa); }
+
+    /* CERTIFICATES */
+    #certificates { background: var(--bg-dark); }
+    .cert-list { display: flex; flex-direction: column; gap: 16px; }
+    .cert-card { display: flex; gap: 20px; border-radius: 16px; padding: 24px; }
+    .cert-card.featured { border: 1px solid rgba(59,130,246,.4); background: rgba(59,130,246,.04); }
+    .cert-card.normal   { border: 1px solid rgba(71,85,105,.4);  background: rgba(30,41,59,.2); }
+    .cert-icon { width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .cert-card.featured .cert-icon { background: rgba(59,130,246,.15); }
+    .cert-card.normal   .cert-icon { background: rgba(30,41,59,.5); }
+    .cert-card.featured .cert-icon svg { stroke: var(--blue-light); }
+    .cert-card.normal   .cert-icon svg { stroke: var(--slate-400); }
+    .cert-body { flex: 1; min-width: 0; }
+    .cert-top { display: flex; flex-wrap: wrap; align-items: flex-start; justify-content: space-between; gap: 8px; margin-bottom: 6px; }
+    .cert-title { color: var(--white); font-size: .97rem; font-weight: 600; }
+    .cert-issuer { padding: 2px 10px; border-radius: 9999px; font-size: .72rem; border: 1px solid; flex-shrink: 0; }
+    .cert-card.featured .cert-issuer { background: rgba(59,130,246,.15); color: #93c5fd; border-color: rgba(59,130,246,.3); }
+    .cert-card.normal   .cert-issuer { background: rgba(30,41,59,.5); color: var(--slate-400); border-color: rgba(71,85,105,.5); }
+    .cert-desc { color: var(--slate-400); font-size: .875rem; line-height: 1.65; }
+
+    /* CONTACT */
+    #contact { background: var(--bg-mid); text-align: center; }
+    #contact .section-label { justify-content: center; }
+    .contact-cards { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; margin-bottom: 40px; }
+    .contact-card { border-radius: 16px; padding: 24px; border: 1px solid rgba(71,85,105,.4); background: rgba(30,41,59,.2); display: flex; flex-direction: column; align-items: center; gap: 12px; }
+    .contact-icon { width: 40px; height: 40px; border-radius: 10px; background: rgba(59,130,246,.12); border: 1px solid rgba(59,130,246,.2); display: flex; align-items: center; justify-content: center; }
+    .contact-icon svg { stroke: var(--blue-light); }
+    .contact-label { color: var(--slate-500); font-size: .75rem; }
+    .contact-value { color: var(--slate-300); font-size: .875rem; font-weight: 500; }
+    .contact-value a { color: var(--slate-300); transition: color .2s; }
+    .contact-value a:hover { color: var(--blue-light); }
+    .contact-btns { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
+
+    /* FOOTER */
+    footer { background: var(--bg-dark); border-top: 1px solid var(--border); padding: 24px; text-align: center; color: var(--slate-600); font-size: .8rem; }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .nav-toggle { display: block; }
+      .hero-name { font-size: 2rem; }
+      .about-grid { grid-template-columns: 1fr; }
+      .projects-grid { grid-template-columns: 1fr; }
+      .skills-grid { grid-template-columns: 1fr 1fr; }
+      .contact-cards { grid-template-columns: 1fr; }
     }
-    .content {
-      margin-left:100px;
+    @media (max-width: 480px) {
+      .skills-grid { grid-template-columns: 1fr; }
     }
-    .sidebar a {
-      font-size:12px;
-    }
-  }
-</style>
+  </style>
 </head>
-
 <body>
 
-<!-- SIDEBAR -->
-<div class="sidebar">
-
-  <div class="profile">
-    <img src="https://i.imgur.com/0y0y0y0.png" alt="profile">
-    <h2>Jed Angelo</h2>
+<!-- NAVBAR -->
+<nav>
+  <div class="nav-inner">
+    <a class="nav-logo" href="#">JAM<span>.</span>dev</a>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
+      <a href="#certificates">Certificates</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <button class="nav-toggle" onclick="document.getElementById('mobile-menu').classList.toggle('open')" aria-label="Toggle menu">
+      <svg width="22" height="22" viewBox="0 0 24 24" stroke="currentColor"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
   </div>
+  <div id="mobile-menu" class="nav-mobile">
+    <a href="#about"        onclick="this.parentElement.classList.remove('open')">About</a>
+    <a href="#projects"     onclick="this.parentElement.classList.remove('open')">Projects</a>
+    <a href="#skills"       onclick="this.parentElement.classList.remove('open')">Skills</a>
+    <a href="#certificates" onclick="this.parentElement.classList.remove('open')">Certificates</a>
+    <a href="#contact"      onclick="this.parentElement.classList.remove('open')">Contact</a>
+  </div>
+</nav>
 
-  <a href="#about">About Me</a>
-  <a href="#projects">Projects</a>
-  <a href="#skills">Skills</a>
-  <a href="#certificates">Certificates</a>
-  <a href="#contact">Contact</a>
+<main>
 
-</div>
-
-<!-- CONTENT -->
-<div class="content">
-
-  <!-- ABOUT -->
-  <section id="about">
-    <h2>About Me</h2>
-
-    <div class="card">
-      <p>
-        BSIT Graduate with experience in networking, system development,
-        and Linux server administration.
-      </p>
+<!-- HERO -->
+<section id="hero">
+  <div class="grid-bg"></div>
+  <div class="glow"></div>
+  <div class="hero-inner">
+    <div class="avatar">JM</div>
+    <div class="status-dot">Open to opportunities</div>
+    <h1 class="hero-name">Jed Angelo O. Manubag</h1>
+    <p class="hero-title">BSIT Graduate</p>
+    <p class="hero-tagline">Aspiring IT professional building real-world systems</p>
+    <div class="tags">
+      <span class="tag">Networking</span>
+      <span class="tag">System Development</span>
+      <span class="tag">Linux Administration</span>
     </div>
-
-    <div class="card">
-      <h3>Educational Background</h3>
-      <p>Bachelor of Science in Information Technology</p>
-      <p>St. Michael's College (2022 - 2026)</p>
+    <div class="btn-row">
+      <a class="btn btn-primary" href="mailto:your.email@example.com">
+        <svg width="16" height="16" viewBox="0 0 24 24" stroke="#fff"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg>
+        Get in Touch
+      </a>
+      <a class="btn btn-outline" href="https://github.com/jedangelomanubag" target="_blank" rel="noopener">
+        <svg width="16" height="16" viewBox="0 0 24 24" stroke="currentColor"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+        GitHub
+      </a>
     </div>
-  </section>
-
-  <!-- PROJECTS -->
-  <section id="projects">
-    <h2>Projects</h2>
-
-    <div class="grid">
-
-      <div class="card">
-        <h3>Water Utility Billing System</h3>
-        <p>Capstone system with billing, meter reading, SMS notification.</p>
-        <span class="tag">Capstone</span>
+    <div class="hero-icons">
+      <div class="hero-icon-item">
+        <div class="icon-box"><svg width="18" height="18" viewBox="0 0 24 24" stroke="currentColor"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg></div>
+        Networking
       </div>
-
-      <div class="card">
-        <h3>CRUD System</h3>
-        <p>Basic database-driven web application.</p>
+      <div class="hero-icon-item">
+        <div class="icon-box"><svg width="18" height="18" viewBox="0 0 24 24" stroke="currentColor"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg></div>
+        Linux
       </div>
-
-      <div class="card">
-        <h3>Linux Server Setup</h3>
-        <p>SSH, file sharing, system configuration practice.</p>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- SKILLS -->
-  <section id="skills">
-    <h2>Skills</h2>
-
-    <div class="grid">
-      <div class="card">HTML / CSS / JavaScript</div>
-      <div class="card">Linux Administration</div>
-      <div class="card">MySQL Database</div>
-      <div class="card">Networking Fundamentals</div>
-    </div>
-  </section>
-
-  <!-- CERTIFICATES -->
-  <section id="certificates">
-    <h2>Certificates</h2>
-
-    <div class="grid">
-      <div class="card">
-        <h3>TESDA NC II</h3>
-        <p>Computer Systems Servicing</p>
-      </div>
-
-      <div class="card">
-        <h3>Networking Fundamentals</h3>
-        <p>Cisco / Training</p>
+      <div class="hero-icon-item">
+        <div class="icon-box"><svg width="18" height="18" viewBox="0 0 24 24" stroke="currentColor"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
+        Systems
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- CONTACT -->
-  <section id="contact">
-    <h2>Contact</h2>
-
-    <div class="card">
-      <p>Email: your.email@example.com</p>
-      <p>GitHub: github.com/yourusername</p>
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="section-label"><span>About Me</span></div>
+    <h2 class="section-title">Building practical systems, not just theory</h2>
+    <div class="about-grid">
+      <div class="about-bio">
+        <p>I'm a BSIT graduate from St. Michael's College with a passion for building real-world IT systems. My focus spans networking, backend/system development, and Linux server administration.</p>
+        <p>Rather than sticking to textbook theory, I prefer hands-on work — setting up servers, configuring networks, and developing full systems like my capstone water utility billing platform.</p>
+        <p>I'm driven by the challenge of making technology work in practical, impactful ways.</p>
+      </div>
+      <div class="edu-card">
+        <div class="edu-card-header">
+          <svg width="20" height="20" viewBox="0 0 24 24" stroke="currentColor"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 1.657 2.686 3 6 3s6-1.343 6-3v-5"/></svg>
+          Education
+        </div>
+        <h4>Bachelor of Science in Information Technology</h4>
+        <p class="school">St. Michael's College</p>
+        <p class="year">2022 – 2026</p>
+        <hr class="edu-divider">
+        <div class="interests-label">
+          <svg width="16" height="16" viewBox="0 0 24 24" stroke="currentColor"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          Core Interests
+        </div>
+        <ul class="interest-list">
+          <li>Networking systems &amp; configuration</li>
+          <li>Backend / system development</li>
+          <li>Linux server administration</li>
+          <li>Real-world utility systems</li>
+        </ul>
+      </div>
     </div>
-  </section>
+  </div>
+</section>
 
-</div>
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="container">
+    <div class="section-label"><span>Projects</span></div>
+    <h2 class="section-title">What I've Built</h2>
+    <p class="section-sub">From capstone systems to hands-on lab work — each project reflects a real-world problem.</p>
+    <div class="projects-grid">
+      <div class="project-card blue">
+        <div class="card-header">
+          <div class="card-icon-wrap">
+            <div class="card-icon"><svg width="18" height="18" viewBox="0 0 24 24" stroke="currentColor"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+            <span class="card-title">Water Utility Billing System</span>
+          </div>
+          <span class="card-badge badge-blue">Capstone</span>
+        </div>
+        <p class="card-desc">A full role-based billing platform for a water utility company. Handles meter reading, automated billing, SMS notifications, and consumer monitoring.</p>
+        <ul class="card-features">
+          <li>Meter reading system</li><li>Automated billing computation</li>
+          <li>SMS notification system</li><li>Consumer billing monitoring</li>
+          <li>Role-based access (Admin / Reader / Consumer)</li>
+        </ul>
+        <div class="card-tags">
+          <span class="card-tag">System Design</span><span class="card-tag">MySQL</span>
+          <span class="card-tag">Role-based Auth</span><span class="card-tag">SMS API</span>
+        </div>
+      </div>
+      <div class="project-card slate">
+        <div class="card-header">
+          <div class="card-icon-wrap">
+            <div class="card-icon"><svg width="18" height="18" viewBox="0 0 24 24" stroke="currentColor"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg></div>
+            <span class="card-title">CRUD Web System</span>
+          </div>
+          <span class="card-badge badge-slate">Practice</span>
+        </div>
+        <p class="card-desc">A database-driven create/read/update/delete web application built to solidify backend logic and database design fundamentals.</p>
+        <ul class="card-features">
+          <li>Full CRUD operations</li><li>Database-driven architecture</li>
+          <li>Backend logic implementation</li><li>Structured data management</li>
+        </ul>
+        <div class="card-tags">
+          <span class="card-tag">HTML</span><span class="card-tag">CSS</span>
+          <span class="card-tag">JavaScript</span><span class="card-tag">MySQL</span>
+        </div>
+      </div>
+      <div class="project-card green">
+        <div class="card-header">
+          <div class="card-icon-wrap">
+            <div class="card-icon"><svg width="18" height="18" viewBox="0 0 24 24" stroke="currentColor"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
+            <span class="card-title">Linux Server Setup</span>
+          </div>
+          <span class="card-badge badge-green">Lab / Practice</span>
+        </div>
+        <p class="card-desc">Hands-on Linux server administration practice including SSH configuration, file sharing setup, and system configuration.</p>
+        <ul class="card-features">
+          <li>SSH configuration</li><li>File sharing setup</li>
+          <li>Server administration</li><li>System configuration</li>
+        </ul>
+        <div class="card-tags">
+          <span class="card-tag">Linux</span><span class="card-tag">SSH</span>
+          <span class="card-tag">Samba / NFS</span><span class="card-tag">CLI</span>
+        </div>
+      </div>
+      <div class="project-card purple">
+        <div class="card-header">
+          <div class="card-icon-wrap">
+            <div class="card-icon"><svg width="18" height="18" viewBox="0 0 24 24" stroke="currentColor"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg></div>
+            <span class="card-title">Networking Practice</span>
+          </div>
+          <span class="card-badge badge-purple">Lab / Practice</span>
+        </div>
+        <p class="card-desc">Exercises covering subnetting, routing concepts, and network configuration fundamentals using simulation and lab environments.</p>
+        <ul class="card-features">
+          <li>Subnetting exercises</li><li>Routing concepts</li>
+          <li>Network configuration</li><li>Protocol fundamentals</li>
+        </ul>
+        <div class="card-tags">
+          <span class="card-tag">Subnetting</span><span class="card-tag">Routing</span>
+          <span class="card-tag">Network Config</span><span class="card-tag">Packet Tracer</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="container">
+    <div class="section-label"><span>Skills</span></div>
+    <h2 class="section-title">Technical Toolkit</h2>
+    <p class="section-sub">Skills built through coursework, capstone development, and hands-on lab practice.</p>
+    <div class="skills-grid">
+      <div class="skill-group orange">
+        <div class="skill-group-header"><svg width="18" height="18" viewBox="0 0 24 24" stroke="currentColor"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg> Frontend</div>
+        <div class="skill-item"><div class="skill-row"><span class="skill-name">HTML</span><span class="skill-pct">75%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" style="width:75%"></div></div></div>
+        <div class="skill-item"><div class="skill-row"><span class="skill-name">CSS</span><span class="skill-pct">70%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" style="width:70%"></div></div></div>
+        <div class="skill-item"><div class="skill-row"><span class="skill-name">JavaScript</span><span class="skill-pct">50%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" style="width:50%"></div></div></div>
+      </div>
+      <div class="skill-group blue">
+        <div class="skill-group-header"><svg width="18" height="18" viewBox="0 0 24 24" stroke="currentColor"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg> Backend / Systems</div>
+        <div class="skill-item"><div class="skill-row"><span class="skill-name">Node.js (intro)</span><span class="skill-pct">35%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" style="width:35%"></div></div></div>
+        <div class="skill-item"><div class="skill-row"><span class="skill-name">System Design</span><span class="skill-pct">60%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" style="width:60%"></div></div></div>
+        <div class="skill-item"><div class="skill-row"><span class="skill-name">REST concepts</span><span class="skill-pct">50%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" style="width:50%"></div></div></div>
+      </div>
+      <div class="skill-group cyan">
+        <div class="skill-group-header"><svg width="18" height="18" viewBox="0 0 24 24" stroke="currentColor"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg> Database</div>
+        <div class="skill-item"><div class="skill-row"><span class="skill-name">MySQL</span><span class="skill-pct">70%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" style="width:70%"></div></div></div>
+        <div class="skill-item"><div class="skill-row"><span class="skill-name">DB Structure Design</span><span class="skill-pct">65%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" style="width:65%"></div></div></div>
+        <div class="skill-item"><div class="skill-row"><span class="skill-name">SQL Queries</span><span class="skill-pct">65%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" style="width:65%"></div></div></div>
+      </div>
+      <div class="skill-group green">
+        <div class="skill-group-header"><svg width="18" height="18" viewBox="0 0 24 24" stroke="currentColor"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg> Linux / System</div>
+        <div class="skill-item"><div class="skill-row"><span class="skill-name">Linux Administration</span><span class="skill-pct">65%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" style="width:65%"></div></div></div>
+        <div class="skill-item"><div class="skill-row"><span class="skill-name">SSH Configuration</span><span class="skill-pct">60%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" style="width:60%"></div></div></div>
+        <div class="skill-item"><div class="skill-row"><span class="skill-name">File Sharing</span><span class="skill-pct">55%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" style="width:55%"></div></div></div>
+        <div class="skill-item"><div class="skill-row"><span class="skill-name">Server Setup</span><span class="skill-pct">60%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" style="width:60%"></div></div></div>
+      </div>
+      <div class="skill-group purple">
+        <div class="skill-group-header"><svg width="18" height="18" viewBox="0 0 24 24" stroke="currentColor"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/></svg> Networking</div>
+        <div class="skill-item"><div class="skill-row"><span class="skill-name">Subnetting</span><span class="skill-pct">65%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" style="width:65%"></div></div></div>
+        <div class="skill-item"><div class="skill-row"><span class="skill-name">Routing Concepts</span><span class="skill-pct">55%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" style="width:55%"></div></div></div>
+        <div class="skill-item"><div class="skill-row"><span class="skill-name">Network Configuration</span><span class="skill-pct">60%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" style="width:60%"></div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CERTIFICATES -->
+<section id="certificates">
+  <div class="container">
+    <div class="section-label"><span>Certifications</span></div>
+    <h2 class="section-title">Certificates &amp; Training</h2>
+    <p class="section-sub">Formal recognitions and training programs completed alongside academic work.</p>
+    <div class="cert-list">
+      <div class="cert-card featured">
+        <div class="cert-icon"><svg width="18" height="18" viewBox="0 0 24 24" stroke="currentColor"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg></div>
+        <div class="cert-body">
+          <div class="cert-top"><span class="cert-title">TESDA NC II – Computer Systems Servicing</span><span class="cert-issuer">TESDA</span></div>
+          <p class="cert-desc">National certification for computer hardware servicing, assembly, and maintenance.</p>
+        </div>
+      </div>
+      <div class="cert-card normal">
+        <div class="cert-icon"><svg width="18" height="18" viewBox="0 0 24 24" stroke="currentColor"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <div class="cert-body">
+          <div class="cert-top"><span class="cert-title">Networking Fundamentals</span><span class="cert-issuer">Cisco / Training</span></div>
+          <p class="cert-desc">Covers core networking concepts, protocols, subnetting, and basic router/switch configuration.</p>
+        </div>
+      </div>
+      <div class="cert-card normal">
+        <div class="cert-icon"><svg width="18" height="18" viewBox="0 0 24 24" stroke="currentColor"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <div class="cert-body">
+          <div class="cert-top"><span class="cert-title">Linux Basics / System Administration</span><span class="cert-issuer">Training</span></div>
+          <p class="cert-desc">Foundations of Linux OS, shell commands, file systems, user management, and server setup.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <div class="section-label"><span>Contact</span></div>
+    <h2 class="section-title">Let's Connect</h2>
+    <p class="section-sub">I'm actively looking for opportunities in networking, system administration, and backend development. Feel free to reach out.</p>
+    <div class="contact-cards">
+      <div class="contact-card">
+        <div class="contact-icon"><svg width="18" height="18" viewBox="0 0 24 24" stroke="currentColor"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg></div>
+        <p class="contact-label">Email</p>
+        <p class="contact-value"><a href="mailto:your.email@example.com">your.email@example.com</a></p>
+      </div>
+      <div class="contact-card">
+        <div class="contact-icon"><svg width="18" height="18" viewBox="0 0 24 24" stroke="currentColor"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg></div>
+        <p class="contact-label">GitHub</p>
+        <p class="contact-value"><a href="https://github.com/jedangelomanubag" target="_blank" rel="noopener">jedangelomanubag</a></p>
+      </div>
+      <div class="contact-card">
+        <div class="contact-icon"><svg width="18" height="18" viewBox="0 0 24 24" stroke="currentColor"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+        <p class="contact-label">Location</p>
+        <p class="contact-value">Philippines</p>
+      </div>
+    </div>
+    <div class="contact-btns">
+      <a class="btn btn-primary" href="mailto:your.email@example.com">
+        <svg width="16" height="16" viewBox="0 0 24 24" stroke="#fff"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg>
+        Send an Email
+      </a>
+      <a class="btn btn-outline" href="https://github.com/jedangelomanubag" target="_blank" rel="noopener">
+        <svg width="16" height="16" viewBox="0 0 24 24" stroke="currentColor"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+        View GitHub
+      </a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>© 2026 Jed Angelo O. Manubag — Portfolio</footer>
 
 </body>
 </html>
