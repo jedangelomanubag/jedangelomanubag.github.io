@@ -1,39 +1,113 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>My Portfolio</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Jed Angelo | Portfolio</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #0f172a;
+      color: #e2e8f0;
+    }
+
+    header {
+      padding: 60px 20px;
+      text-align: center;
+      background: #111827;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 40px;
+    }
+
+    header p {
+      color: #94a3b8;
+    }
+
+    section {
+      max-width: 900px;
+      margin: auto;
+      padding: 40px 20px;
+    }
+
+    h2 {
+      border-left: 4px solid #38bdf8;
+      padding-left: 10px;
+    }
+
+    .card {
+      background: #1e293b;
+      padding: 15px;
+      margin: 10px 0;
+      border-radius: 8px;
+    }
+
+    a {
+      color: #38bdf8;
+      text-decoration: none;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      color: #64748b;
+    }
+  </style>
 </head>
 
-<body style="font-family: Arial; max-width: 800px; margin: auto; padding: 20px;">
+<body>
 
-  <h1>Hi, I'm Jed Angelo</h1>
-  <p>BSIT Graduate | Aspiring IT Professional</p>
+<header>
+  <h1>Jed Angelo O. Manubag</h1>
+  <p>BSIT Graduate | Networking | System Developer | Linux Enthusiast</p>
+</header>
 
-  <hr>
-
+<section>
   <h2>About Me</h2>
   <p>
-    I am an Information Technology graduate with interest in networking, 
-    system development, and server management.
+    I am an Information Technology graduate passionate about networking,
+    system development, and building real-world utility systems.
   </p>
+</section>
 
+<section>
   <h2>Skills</h2>
-  <ul>
-    <li>HTML / CSS / JavaScript</li>
-    <li>Linux System Administration</li>
-    <li>Networking Fundamentals</li>
-    <li>MySQL Database</li>
-  </ul>
+  <div class="card">HTML, CSS, JavaScript</div>
+  <div class="card">Linux System Administration</div>
+  <div class="card">MySQL / Database Design</div>
+  <div class="card">Networking Fundamentals</div>
+</section>
 
+<section>
   <h2>Projects</h2>
-  <ul>
-    <li>Water Utility Billing System (Capstone)</li>
-    <li>Basic CRUD Web Application</li>
-  </ul>
 
+  <div class="card">
+    <h3>Water Utility Billing System (Capstone)</h3>
+    <p>
+      A full system for meter reading, billing computation,
+      SMS notification, and consumer monitoring.
+    </p>
+  </div>
+
+  <div class="card">
+    <h3>Basic CRUD Web App</h3>
+    <p>Simple create/read/update/delete system using web technologies.</p>
+  </div>
+</section>
+
+<section>
   <h2>Contact</h2>
   <p>Email: your.email@example.com</p>
+  <p>GitHub: <a href="https://github.com/">github.com/yourusername</a></p>
+</section>
+
+<footer>
+  © 2026 Jed Angelo | Built with GitHub Pages
+</footer>
 
 </body>
 </html>
