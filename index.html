@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Jed Angelo | Portfolio</title>
+<title>Jed Angelo | Developer Portfolio</title>
 
 <style>
   :root {
@@ -12,6 +12,7 @@
     --text:#e6edf3;
     --muted:#9aa4b2;
     --accent:#4ea1ff;
+    --border:#1e293b;
   }
 
   * {
@@ -36,8 +37,8 @@
     justify-content:center;
     gap:25px;
     padding:15px;
+    border-bottom:1px solid var(--border);
     z-index:1000;
-    border-bottom:1px solid #1e293b;
   }
 
   nav a {
@@ -50,13 +51,13 @@
     color:var(--accent);
   }
 
-  /* HEADER */
+  /* HERO */
   header {
     display:flex;
-    align-items:center;
     justify-content:center;
-    gap:30px;
-    padding:120px 20px 60px;
+    align-items:center;
+    gap:40px;
+    padding:140px 20px 80px;
     flex-wrap:wrap;
   }
 
@@ -65,11 +66,11 @@
   }
 
   .profile img {
-    width:130px;
-    height:130px;
+    width:140px;
+    height:140px;
     border-radius:50%;
-    object-fit:cover;
     border:3px solid var(--accent);
+    object-fit:cover;
   }
 
   .profile h1 {
@@ -77,17 +78,17 @@
     font-size:22px;
   }
 
-  .tagline {
-    max-width:400px;
+  .subtitle {
     color:var(--muted);
+    max-width:400px;
     font-size:16px;
   }
 
   /* SECTIONS */
   section {
-    padding:90px 20px;
     max-width:1000px;
     margin:auto;
+    padding:90px 20px;
   }
 
   h2 {
@@ -96,9 +97,10 @@
     margin-bottom:20px;
   }
 
+  /* PROJECT CARDS */
   .grid {
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
     gap:15px;
   }
 
@@ -106,6 +108,19 @@
     background:var(--card);
     padding:18px;
     border-radius:10px;
+    border:1px solid var(--border);
+    transition:0.3s;
+  }
+
+  .card:hover {
+    transform:translateY(-5px);
+    border-color:var(--accent);
+  }
+
+  .project-title {
+    color:var(--accent);
+    font-size:16px;
+    margin-bottom:8px;
   }
 
   .tag {
@@ -118,6 +133,31 @@
     color:var(--muted);
   }
 
+  /* BUTTONS */
+  .btn {
+    display:inline-block;
+    margin-top:10px;
+    padding:6px 10px;
+    border:1px solid var(--accent);
+    border-radius:6px;
+    color:var(--accent);
+    font-size:13px;
+    text-decoration:none;
+  }
+
+  .btn:hover {
+    background:var(--accent);
+    color:#000;
+  }
+
+  /* CONTACT */
+  .contact {
+    background:var(--card);
+    padding:20px;
+    border-radius:10px;
+    border:1px solid var(--border);
+  }
+
   footer {
     text-align:center;
     padding:40px;
@@ -128,51 +168,69 @@
 
 <body>
 
-<!-- NAV -->
 <nav>
   <a href="#home">Home</a>
   <a href="#projects">Projects</a>
   <a href="#skills">Skills</a>
   <a href="#certificates">Certificates</a>
+  <a href="#contact">Contact</a>
 </nav>
 
-<!-- HEADER -->
+<!-- HERO -->
 <header id="home">
 
   <div class="profile">
-    <!-- replace with your photo -->
-    <img src="https://i.imgur.com/0y0y0y0.png" alt="Profile Photo">
-
+    <img src="https://i.imgur.com/0y0y0y0.png" alt="profile">
     <h1>Jed Angelo O. Manubag</h1>
   </div>
 
-  <div class="tagline">
-    BSIT Graduate • Networking • System Developer • Linux Enthusiast
+  <div class="subtitle">
+    BSIT Graduate • Networking • System Developer • Linux Enthusiast  
+    <br><br>
+    Building real-world systems, focusing on utility billing, networking, and backend development.
   </div>
 
 </header>
 
-<!-- PROJECTS -->
+<!-- FEATURED PROJECT -->
 <section id="projects">
-  <h2>Projects</h2>
+  <h2>Featured Project</h2>
+
+  <div class="card">
+    <div class="project-title">Water Utility Billing System (Capstone)</div>
+    <p>
+      A full system for meter reading, automated billing computation, SMS notifications,
+      and consumer monitoring dashboard.
+    </p>
+
+    <span class="tag">PHP / MySQL / System Design</span>
+    <br>
+    <a class="btn" href="#">View Project</a>
+    <a class="btn" href="#">GitHub Repo</a>
+  </div>
+
+  <br><br>
+
+  <h2>Other Projects</h2>
+
   <div class="grid">
 
     <div class="card">
-      <h3>Water Utility Billing System</h3>
-      <p>Capstone system with billing, meter reading, SMS notification, and monitoring.</p>
-      <span class="tag">Capstone</span>
-    </div>
-
-    <div class="card">
-      <h3>CRUD System</h3>
-      <p>Basic web application with database operations.</p>
+      <div class="project-title">CRUD System</div>
+      <p>Basic web system with database operations.</p>
       <span class="tag">Web App</span>
     </div>
 
     <div class="card">
-      <h3>Linux Server Setup</h3>
+      <div class="project-title">Linux Server Setup</div>
       <p>SSH, file sharing, and server configuration practice.</p>
       <span class="tag">System Admin</span>
+    </div>
+
+    <div class="card">
+      <div class="project-title">Networking Practice</div>
+      <p>Subnetting, routing, and network configuration exercises.</p>
+      <span class="tag">Networking</span>
     </div>
 
   </div>
@@ -181,22 +239,21 @@
 <!-- SKILLS -->
 <section id="skills">
   <h2>Skills</h2>
+
   <div class="grid">
-
     <div class="card">HTML / CSS / JavaScript</div>
-    <div class="card">Linux Administration</div>
-    <div class="card">MySQL Database</div>
+    <div class="card">Linux System Administration</div>
+    <div class="card">MySQL Database Design</div>
     <div class="card">Networking Fundamentals</div>
-    <div class="card">Basic Node.js</div>
-
+    <div class="card">Basic Node.js / Backend</div>
   </div>
 </section>
 
 <!-- CERTIFICATES -->
 <section id="certificates">
   <h2>Certificates</h2>
-  <div class="grid">
 
+  <div class="grid">
     <div class="card">
       <h3>TESDA NC II</h3>
       <p>Computer Systems Servicing</p>
@@ -204,19 +261,28 @@
 
     <div class="card">
       <h3>Networking Fundamentals</h3>
-      <p>Basic networking training</p>
+      <p>Cisco / Online Training</p>
     </div>
 
     <div class="card">
       <h3>Linux Basics</h3>
-      <p>System administration fundamentals</p>
+      <p>System Administration Training</p>
     </div>
+  </div>
+</section>
 
+<!-- CONTACT -->
+<section id="contact">
+  <h2>Contact</h2>
+
+  <div class="contact">
+    <p>Email: your.email@example.com</p>
+    <p>GitHub: https://github.com/jedangelomanubag</p>
   </div>
 </section>
 
 <footer>
-  © 2026 Jed Angelo Manubag | GitHub Pages Portfolio
+  © 2026 Jed Angelo Manubag • Developer Portfolio
 </footer>
 
 </body>
