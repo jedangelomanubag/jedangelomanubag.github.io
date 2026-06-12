@@ -26,7 +26,7 @@
     color:var(--text);
   }
 
-  /* NAVBAR */
+  /* NAV */
   nav {
     position:fixed;
     top:0;
@@ -44,32 +44,50 @@
     color:var(--muted);
     text-decoration:none;
     font-size:14px;
-    transition:0.3s;
   }
 
   nav a:hover {
     color:var(--accent);
   }
 
+  /* HEADER */
+  header {
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:30px;
+    padding:120px 20px 60px;
+    flex-wrap:wrap;
+  }
+
+  .profile {
+    text-align:center;
+  }
+
+  .profile img {
+    width:130px;
+    height:130px;
+    border-radius:50%;
+    object-fit:cover;
+    border:3px solid var(--accent);
+  }
+
+  .profile h1 {
+    margin-top:10px;
+    font-size:22px;
+  }
+
+  .tagline {
+    max-width:400px;
+    color:var(--muted);
+    font-size:16px;
+  }
+
+  /* SECTIONS */
   section {
-    padding:100px 20px;
+    padding:90px 20px;
     max-width:1000px;
     margin:auto;
-  }
-
-  /* HERO */
-  .hero {
-    text-align:center;
-    padding-top:140px;
-  }
-
-  .hero h1 {
-    font-size:42px;
-  }
-
-  .hero p {
-    color:var(--muted);
-    margin-top:10px;
   }
 
   h2 {
@@ -110,7 +128,7 @@
 
 <body>
 
-<!-- NAVIGATION -->
+<!-- NAV -->
 <nav>
   <a href="#home">Home</a>
   <a href="#projects">Projects</a>
@@ -118,11 +136,21 @@
   <a href="#certificates">Certificates</a>
 </nav>
 
-<!-- HOME -->
-<section id="home" class="hero">
-  <h1>Jed Angelo O. Manubag</h1>
-  <p>BSIT Graduate • Networking • System Developer • Linux Enthusiast</p>
-</section>
+<!-- HEADER -->
+<header id="home">
+
+  <div class="profile">
+    <!-- replace with your photo -->
+    <img src="https://i.imgur.com/0y0y0y0.png" alt="Profile Photo">
+
+    <h1>Jed Angelo O. Manubag</h1>
+  </div>
+
+  <div class="tagline">
+    BSIT Graduate • Networking • System Developer • Linux Enthusiast
+  </div>
+
+</header>
 
 <!-- PROJECTS -->
 <section id="projects">
@@ -131,7 +159,7 @@
 
     <div class="card">
       <h3>Water Utility Billing System</h3>
-      <p>Capstone system with billing, meter reading, and SMS notification.</p>
+      <p>Capstone system with billing, meter reading, SMS notification, and monitoring.</p>
       <span class="tag">Capstone</span>
     </div>
 
@@ -170,18 +198,18 @@
   <div class="grid">
 
     <div class="card">
-      <h3>TESDA / NC2</h3>
-      <p>Computer Systems Servicing NC II</p>
+      <h3>TESDA NC II</h3>
+      <p>Computer Systems Servicing</p>
     </div>
 
     <div class="card">
       <h3>Networking Fundamentals</h3>
-      <p>Cisco / Online Training (add yours)</p>
+      <p>Basic networking training</p>
     </div>
 
     <div class="card">
       <h3>Linux Basics</h3>
-      <p>System administration training</p>
+      <p>System administration fundamentals</p>
     </div>
 
   </div>
