@@ -9,7 +9,7 @@ const skillGroups = [
     skills: [
       { name: "HTML", level: 75 },
       { name: "CSS", level: 70 },
-      { name: "JavaScript", level: 50 },
+      { name: "PHP", level: 50 },
     ],
   },
   {
@@ -18,9 +18,9 @@ const skillGroups = [
     color: "text-blue-400",
     bg: "bg-blue-500/10 border-blue-500/20",
     skills: [
-      { name: "Node.js (intro)", level: 35 },
+      { name: "Data normalization concepts", level: 35 },
       { name: "System Design", level: 60 },
-      { name: "REST concepts", level: 50 },
+      { name: "Client-server architecture", level: 50 },
     ],
   },
   {
