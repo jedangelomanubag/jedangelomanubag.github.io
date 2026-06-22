@@ -10,7 +10,7 @@ export function Projects() {
 
   return (
     <section id="projects" className="p-10 text-white">
-      <h2 className="text-2xl font-bold mb-6">Projects</h2>
+      <h2 className="text-2xl font-bold mb-6">Projects(fetching old repo)</h2>
 
       <div className="grid md:grid-cols-2 gap-4">
         {repos.map((repo) => (

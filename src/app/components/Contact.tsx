@@ -19,8 +19,8 @@ export function Contact() {
             {
               icon: Mail,
               label: "Email",
-              value: "your.email@example.com",
-              href: "mailto:your.email@example.com",
+              value: "jedangelooyan.manubag@gmail.com",
+              href: "mailto:jedangelooyan.manubag@gmail.com",
             },
             {
               icon: Github,
@@ -67,7 +67,7 @@ export function Contact() {
         </div>
 
         <div className="flex flex-wrap justify-center gap-3">
-          <a href="mailto:your.email@example.com">
+          <a href="mailto:jedangelooyan.manubag@gmail.com">
             <Button className="bg-blue-600 hover:bg-blue-500 text-white gap-2 shadow shadow-blue-600/30">
               <Mail size={16} />
               Send an Email

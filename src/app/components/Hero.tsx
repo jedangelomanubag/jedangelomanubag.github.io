@@ -53,21 +53,6 @@ export function Hero() {
           ))}
         </div>
 
-        <div className="flex flex-wrap justify-center gap-3">
-          <a href="mailto:your.email@example.com">
-            <Button className="bg-blue-600 hover:bg-blue-500 text-white gap-2 shadow shadow-blue-600/30">
-              <Mail size={16} />
-              Get in Touch
-            </Button>
-          </a>
-          <a href="https://github.com/jedangelomanubag" target="_blank" rel="noopener noreferrer">
-            <Button variant="outline" className="border-slate-600 text-slate-300 hover:bg-slate-800 hover:text-white gap-2">
-              <Github size={16} />
-              GitHub
-            </Button>
-          </a>
-        </div>
-
         {/* Quick focus icons */}
         <div className="mt-14 flex justify-center gap-10">
           {[

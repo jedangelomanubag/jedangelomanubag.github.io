@@ -19,7 +19,7 @@ export default function App() {
         <Contact />
       </main>
       <footer className="bg-[#0a0f1e] border-t border-slate-800/60 py-6 text-center text-slate-600" style={{ fontSize: "0.8rem" }}>
-        © 2026 Jed Angelo O. Manubag — Built with React & Tailwind CSS
+        © 2026 Jed Angelo O. Manubag 
       </footer>
     </div>
   );
