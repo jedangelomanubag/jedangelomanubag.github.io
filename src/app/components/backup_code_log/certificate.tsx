@@ -1,26 +1,30 @@
+------------------------------------ version 1 --------------------------
 import { useState } from "react";
 import { Award, CheckCircle } from "lucide-react";
 
 const certs = [
   {
-    title: "Discover the Art of Prompting",
-    issuer: "Google / Coursera",
-    description: "Completion of an online course focused on AI prompting techniques and best practices[cite: 1].",
-    image: "/path-to-your-google-cert.jpg", 
+    title: "TESDA NC II – Computer Systems Servicing",
+    issuer: "TESDA",
+    description:
+      "National certification for computer hardware servicing, assembly, and maintenance.",
+    image: null,
     highlight: true,
   },
   {
-    title: "On-the-Job Training",
-    issuer: "Mapalad Energy Generating Corporation",
-    description: "Recognized for developing a Mobile Application for Workstations, Servers, and Network Maintenance[cite: 2].",
-    image: "/path-to-your-mapalad-cert.png",
-    highlight: true,
+    title: "Networking Fundamentals",
+    issuer: "Cisco / Training",
+    description:
+      "Covers core networking concepts, protocols, subnetting, and basic router/switch configuration.",
+    image: null,
+    highlight: false,
   },
   {
-    title: "TOPCIT - Test of Practical Competency in ICT",
-    issuer: "IITP",
-    description: "Assessment of practical ICT competencies including software development, data management, and system architecture[cite: 3].",
-    image: "/path-to-your-topcit-cert.pdf",
+    title: "Linux Basics / System Administration",
+    issuer: "Training",
+    description:
+      "Foundations of Linux OS, shell commands, file systems, user management, and server setup.",
+    image: null,
     highlight: false,
   },
 ];
@@ -38,7 +42,7 @@ export function Certificates() {
         </h2>
 
         <p className="text-slate-400 mb-12 text-sm">
-          Formal recognitions and training programs completed.
+          Formal recognitions and training programs completed alongside academic work.
         </p>
 
         <div className="space-y-4">
@@ -89,14 +93,14 @@ export function Certificates() {
                 {/* Expandable Section */}
                 <div
                   className={`overflow-hidden transition-all duration-500 ease-in-out ${
-                    isOpen ? "max-h-[500px] mt-4 opacity-100" : "max-h-0 opacity-0"
+                    isOpen ? "max-h-96 mt-4 opacity-100" : "max-h-0 opacity-0"
                   }`}
                 >
                   {cert.image ? (
                     <img
                       src={cert.image}
                       alt={cert.title}
-                      className="rounded-lg border border-slate-700 w-full object-contain bg-white/5"
+                      className="rounded-lg border border-slate-700 w-full object-cover"
                     />
                   ) : (
                     <div className="w-full py-10 text-center text-slate-400 border border-slate-700 rounded-lg">
@@ -112,6 +116,8 @@ export function Certificates() {
     </section>
   );
 }
+
+/* ========================= SECTION LABEL COMPONENT ========================= */
 
 function SectionLabel({ children }: { children: React.ReactNode }) {
   return (
