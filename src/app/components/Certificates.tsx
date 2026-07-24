@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Award, CheckCircle, X, ZoomIn } from "lucide-react";
 
-import Prompt from "./certificates/Prompt.png";
+import Prompt from "./certificates/prompt.png";
 import Mapalad from "./certificates/certificate_mapalad.png";
 import TOPCIT from "./certificates/TOPCIT.png";
 
